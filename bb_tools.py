@@ -4,7 +4,7 @@ from matplotlib.lines import Line2D
 from matplotlib.patches import Polygon
 from matplotlib.widgets import Button
 
-def picker(image, normalize=False):
+def bb_picker(image, normalize=False):
     """
     Interactive picker for rotated rectangle on an image.
 
@@ -27,7 +27,7 @@ def picker(image, normalize=False):
 
     img_h, img_w = img.shape[0], img.shape[1]
 
-    fig, ax = plt.subplots()
+    fig, ax = plt.subplots(figsize=(20, 20))
     ax.imshow(img, origin='upper')  # top-left origin
     ax.set_xlim(0, img_w)
     ax.set_ylim(img_h, 0)
@@ -44,7 +44,7 @@ def picker(image, normalize=False):
 
     # Artists
     cross1 = Line2D([], [], lw=1, color='cyan')
-    cross2 = Line2D([], [], lw=1, color='cyan')
+    cross2 = Line2D([], [], lw=1, color='red')
     ax.add_line(cross1)
     ax.add_line(cross2)
 
@@ -176,7 +176,34 @@ def picker(image, normalize=False):
 
     return corners, width, height, angle
 
+def show_bb(image, corners):
+    """
+    Displays the image with a bounding box drawn using the given normalized coordinates.
+
+    Args:
+        image (str or array-like): Path to image file or image array.
+        corners (list of (x, y)): Normalized coordinates of the bounding box corners.
+    """
+    if isinstance(image, str):
+        img = plt.imread(image)
+    else:
+        img = image
+
+    img_h, img_w = img.shape[0], img.shape[1]
+    abs_corners = [(x * img_w, y * img_h) for x, y in corners]
+
+    fig, ax = plt.subplots(figsize=(20, 20))
+    ax.imshow(img, origin='upper')
+    poly = Polygon(abs_corners, closed=True, fill=False, edgecolor='lime', lw=2)
+    ax.add_patch(poly)
+    ax.set_xlim(0, img_w)
+    ax.set_ylim(img_h, 0)
+    ax.set_aspect('equal')
+    plt.show()
+
 if __name__ == "__main__":
-    data = picker('test.png', normalize=True)
+    data = bb_picker('test.png', normalize=True)
+
+    show_bb('test.png', data[0])
 
     print(data)

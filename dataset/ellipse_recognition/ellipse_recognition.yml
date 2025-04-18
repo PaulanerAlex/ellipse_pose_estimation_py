@@ -1,0 +1,5 @@
+names:
+- ellipse
+path: ./
+train: ./ellipse_recognition/images/train
+val: ./ellipse_recognition/images/val
