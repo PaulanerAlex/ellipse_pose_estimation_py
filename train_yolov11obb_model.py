@@ -1,15 +1,15 @@
 from ultralytics import YOLO
 
 # Load a pretrained model
-model = YOLO("yolo11n-obb.pt")
+# model = YOLO("yolo11n-obb.pt")
 
 # Train the model
-results = model.train(data="dataset/ellipse_recognition/ellipse_recognition.yml", epochs=100, imgsz=640)
+# results = model.train(data="dataset/ellipse_recognition/ellipse_recognition.yml", epochs=100, imgsz=640)
 
 
-# model = YOLO("runs/obb/train/weights/best.pt") # Load the trained model
+model = YOLO("runs/obb/train/weights/best.pt") # Load the trained model
 
-# results = model("test.jpg", show=True) # predict sample image
+results = model("test4.jpg", show=True) # predict sample image
 
 # # Access the results
 # for result in results:

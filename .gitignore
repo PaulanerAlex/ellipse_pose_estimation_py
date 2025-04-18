@@ -3,6 +3,7 @@
 /env
 /__pycache__
 /.vscode
-/runs
+# /runs
 # /dataset
 yolo11n-obb.pt
+test*.jpg
