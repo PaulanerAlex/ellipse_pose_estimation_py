@@ -7,3 +7,7 @@
 # /dataset
 yolo11n-obb.pt
 test*.jpg
+yolo11m-obb.pt
+yolo11n-obb.pt
+yolo11s-obb.pt
+yolo11n.pt
