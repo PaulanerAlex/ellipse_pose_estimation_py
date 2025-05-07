@@ -190,11 +190,12 @@ def show_bb(image, corners):
         img = image
 
     img_h, img_w = img.shape[0], img.shape[1]
-    abs_corners = [(x * img_w, y * img_h) for x, y in corners]
+    # abs_corners = [(x * img_w, y * img_h) for x, y in corners]
+    print(corners)
 
     fig, ax = plt.subplots(figsize=(20, 20))
     ax.imshow(img, origin='upper')
-    poly = Polygon(abs_corners, closed=True, fill=False, edgecolor='lime', lw=2)
+    poly = Polygon(corners, closed=True, fill=False, edgecolor='lime', lw=2)
     ax.add_patch(poly)
     ax.set_xlim(0, img_w)
     ax.set_ylim(img_h, 0)

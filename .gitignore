@@ -5,9 +5,7 @@
 /.vscode
 # /runs
 # /dataset
-yolo11n-obb.pt
+yolo11*.pt
 test*.jpg
-yolo11m-obb.pt
-yolo11n-obb.pt
-yolo11s-obb.pt
-yolo11n.pt
+test*.png
+test.py
